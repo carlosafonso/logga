@@ -116,7 +116,6 @@
 	
 	spl_autoload_register(function($class) {
 
-		echo "AUTOLOAD $class\n";
 		$els = array_values(array_diff(explode('\\', $class), explode('\\', __NAMESPACE__)));
 		$path = __DIR__ . DIRECTORY_SEPARATOR . 'lib';
 		
