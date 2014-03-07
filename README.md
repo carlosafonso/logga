@@ -32,7 +32,7 @@ If you run this code, a file named something like ``default_log_2014-02-15-17-42
 [2014-02-15 17:42:14][INFO   ]: Hello world!
 ```
 
-And that's pretty much it! You have set your loggin system with just a couple of lines. From now on you can trace everything you need using any of the five logging functions provided by Logga (``debug()``, ``info()``, ``warning()``, ``error()`` and ``fatal()``).
+And that's pretty much it! You have set up your logging system with just a couple of lines. From now on you can trace everything you need using any of the five logging functions provided by Logga (``debug()``, ``info()``, ``warning()``, ``error()`` and ``fatal()``).
 
 ##Usage
 This section is currently under development and will be available soon. In the meanwhile feel free to check the code out to see the inner workings of Logga.
