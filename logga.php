@@ -116,6 +116,11 @@
 	
 	spl_autoload_register(function($class) {
 
+		// only attempt to autoload classes belonging to this namespace
+		$els = explode('\\', $class);
+		if (count($els) < 2 || ($els[0] . '\\' . $els[1]) != __NAMESPACE__)
+			return;
+
 		$els = array_values(array_diff(explode('\\', $class), explode('\\', __NAMESPACE__)));
 		$path = __DIR__ . DIRECTORY_SEPARATOR . 'lib';
 		
@@ -128,5 +133,6 @@
 				$path .= '.php';
 		}
 
-		require $path;
+		if (file_exists($path))
+			require $path;
 	});
