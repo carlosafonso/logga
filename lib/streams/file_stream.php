@@ -25,12 +25,12 @@
 				$this->_file = $params['file'];
 
 				if (@$params['date'])
-					$this->_file .= '_' . date('Y-m-d-H-i-s');
+					$this->_file .= '_' . date('Y-m-d_H-i-s');
 			}
 			else
 			{
 				$this->_path = getcwd();
-				$this->_file = 'default_log' . '_' . date('Y-m-d-H-i-s');
+				$this->_file = 'default_log' . '_' . date('Y-m-d_H-i-s');
 			}
 
 			$this->_file .= '.log';
@@ -38,7 +38,7 @@
 
 		public function open() {
 			if (! file_exists($this->_path))
-				if (mkdir($this->_path, 0777, TRUE))
+				if (! mkdir($this->_path, 0777, TRUE))
 					throw new \CarlosAfonso\Logga\Exceptions\LoggaException("Unable to create log folder '{$this->_path}'");
 
 			$this->_f = fopen($this->_path . DIRECTORY_SEPARATOR . $this->_file, 'a');
