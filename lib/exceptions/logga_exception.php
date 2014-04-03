@@ -2,6 +2,6 @@
 
 	namespace CarlosAfonso\Logga\Exceptions;
 	
-	class LoggaException extends Exception {
+	class LoggaException extends \Exception {
 
 	}

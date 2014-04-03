@@ -19,19 +19,18 @@
 		public function __construct($params = NULL) {
 			parent::__construct();
 
-			if ($params)
-			{
+			if (! $params || ! isset($params['path']))
+				$this->_path = getcwd();
+			else
 				$this->_path = $params['path'];
+
+			if (! $params || ! isset($params['file']))
+				$this->_file = 'default_log';
+			else
 				$this->_file = $params['file'];
 
-				if (@$params['date'])
-					$this->_file .= '_' . date('Y-m-d_H-i-s');
-			}
-			else
-			{
-				$this->_path = getcwd();
-				$this->_file = 'default_log' . '_' . date('Y-m-d_H-i-s');
-			}
+			if (@$params['date'])
+				$this->_file .= '_' . date('Y-m-d_H-i-s');
 
 			$this->_file .= '.log';
 		}
@@ -41,7 +40,13 @@
 				if (! mkdir($this->_path, 0777, TRUE))
 					throw new \CarlosAfonso\Logga\Exceptions\LoggaException("Unable to create log folder '{$this->_path}'");
 
-			$this->_f = fopen($this->_path . DIRECTORY_SEPARATOR . $this->_file, 'a');
+			if (! is_writable($this->_path))
+				throw new \CarlosAfonso\Logga\Exceptions\LoggaException("Cannot create log file into folder '{$this->_path}', folder is not writable (check permissions?)");
+
+			$this->_f = @fopen($this->_path . DIRECTORY_SEPARATOR . $this->_file, 'a');
+
+			if ($this->_f === FALSE)
+				throw new \CarlosAfonso\Logga\Exceptions\LoggaException("Unable to create log file '{$this->_file}'");
 		}
 
 		public function log($msg, $level) {
