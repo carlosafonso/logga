@@ -6,7 +6,31 @@ Logga is a logging library for PHP designed for simplicity and ease of use. Star
 Current version features a file stream and a default formatter. Future releases of Logga will have a Database stream out of the box, as well as a plugin system to allow developers to write custom streams and formatters so that pretty much every logging need is covered.
 
 ##Installation
-Logga can be installed by [downloading the latest version](https://github.com/carlosafonso/logga/archive/master.zip) and unzipping everything into your project folder, or by cloning the repository:
+###Composer
+Since version 2.0.0 Logga can be installed using [Composer](https://getcomposer.org/). Add the following dependency to your `composer.json`:
+
+```json
+{
+  "require": {
+    "carlosafonso/logga": "2.*",
+  }
+}
+```
+
+Then run:
+
+```bash
+$ composer update
+```
+
+Don't forget to include Composer's autoload file if you haven't done so already:
+
+```php
+require 'vendor/autoload.php':
+```
+
+###Manual installation
+Logga can also be installed by [downloading the latest version](https://github.com/carlosafonso/logga/archive/master.zip) and unzipping everything into your project folder, or by cloning the repository:
 
 ```bash
 $ git clone https://github.com/carlosafonso/logga.git
@@ -17,16 +41,14 @@ Remember to include the main library file into your project:
 require 'logga.php';
 ```
 ##Quick start
-Import the main library file and set up a quick logger with the following code:
+Set up a quick logger with the following code:
 
 ```php
-require 'logga.php';
-
 $l = new \CarlosAfonso\Logga\Logga();
 $l->info('Hello world!');
 ```
 
-If you run this code, a file named something like ``default_log_2014-02-15-17-42-14.log`` will appear in your project's root path. A quick look into it reveals the following:
+If you run this code, a file named something like ``default_log.log`` will appear in your project's root path. A quick look into it reveals the following:
 
 ```text
 [2014-02-15 17:42:14][INFO   ]: Hello world!
