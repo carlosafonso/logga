@@ -1,5 +1,5 @@
 {
-	"name": "Logga",
+	"name": "carlosafonso/logga",
 	"type": "library",
 	"description": "A logging library for PHP designed for simplicity and ease of use",
 	"keywords": ["logging"],
