@@ -2,6 +2,14 @@
 	
 	namespace CarlosAfonso\Logga\Streams;
 
+	/**
+	 * FileStream represents a log stream which
+	 * outputs all traces to a plain text file. The
+	 * file and its path can be configured as desired.
+	 *
+	 * @author Carlos Afonso
+	 *
+	 */
 	class FileStream extends LogStream {
 
 		private $_f;
@@ -17,7 +25,7 @@
 		}*/
 
 		public function __construct($params = NULL) {
-			parent::__construct();
+			parent::__construct($params);
 
 			if (! $params || ! isset($params['path']))
 				$this->_path = getcwd();

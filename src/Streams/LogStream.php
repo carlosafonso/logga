@@ -2,6 +2,13 @@
 
 	namespace CarlosAfonso\Logga\Streams;
 
+	/**
+	 * LogStream represents an abstract log stream. All
+	 * stream implementations must extend this class.
+	 *
+	 * @author Carlos Afonso
+	 *
+	 */
 	abstract class LogStream {
 
 		protected $_enabled = TRUE;
