@@ -18,12 +18,7 @@
 		public function format($msg, $level) {
 
 			if (is_object($msg) || is_array($msg))
-			{
-				ob_start();
-				echo json_encode($msg);
-				$msg = ob_get_contents();
-				ob_end_clean();
-			}
+				$msg = json_encode($msg);
 
 			$format = "[%s][%s]: %s";
 			return sprintf($format, date('Y-m-d H:i:s'), $this::$_LEVELS[$level], $msg);

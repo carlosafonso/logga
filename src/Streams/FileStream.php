@@ -16,6 +16,7 @@
 
 		private $_path;
 		private $_file;
+		private $_truncate;
 
 		// IDEALLY
 		/*public function __construct($path, $file = NULL) {
@@ -37,6 +38,11 @@
 			else
 				$this->_file = $params['file'];
 
+			if (! $params || ! isset($params['truncate']))
+				$this->_truncate = FALSE;
+			else
+				$this->_truncate = (bool) $params['truncate'];
+
 			if (@$params['date'])
 				$this->_file .= '_' . date('Y-m-d_H-i-s');
 
@@ -51,7 +57,11 @@
 			if (! is_writable($this->_path))
 				throw new \CarlosAfonso\Logga\Exceptions\LoggaException("Cannot create log file into folder '{$this->_path}', folder is not writable (check permissions?)");
 
-			$this->_f = @fopen($this->_path . DIRECTORY_SEPARATOR . $this->_file, 'a');
+			$mode = 'a';
+			if ($this->_truncate)
+				$mode = 'w';
+
+			$this->_f = @fopen($this->_path . DIRECTORY_SEPARATOR . $this->_file, $mode);
 
 			if ($this->_f === FALSE)
 				throw new \CarlosAfonso\Logga\Exceptions\LoggaException("Unable to create log file '{$this->_file}'");
