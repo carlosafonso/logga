@@ -15,15 +15,11 @@
 			parent::__construct($params);
 		}
 
-		public function open() {
-			return;
-		}
+		public function open() {}
 
 		public function log($msg, $level) {
 			echo $this->_formatter->format($msg, $level) . "\n";
 		}
 
-		public function close() {
-			return;
-		}
+		public function close() {}
 	}
