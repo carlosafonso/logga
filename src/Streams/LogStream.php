@@ -12,7 +12,7 @@
 	abstract class LogStream {
 
 		protected $_enabled = TRUE;
-		protected $_minLevel = LOGGA_LVL_DEBUG;
+		protected $_minLevel = \CarlosAfonso\Logga\LogLevel::DEBUG;
 		protected $_formatter;
 
 		public function __construct($params = NULL) {

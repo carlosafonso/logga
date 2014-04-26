@@ -13,7 +13,16 @@
 	 */
 	class DefaultFormatter extends Formatter {
 
-		private static $_LEVELS = array(NULL, 'DEBUG  ', 'INFO   ', 'WARNING', 'ERROR  ', 'FATAL  ');
+		private static $_LEVELS = array(
+				\CarlosAfonso\Logga\LogLevel::DEBUG => 'DEBUG    ',
+				\CarlosAfonso\Logga\LogLevel::INFO => 'INFO     ',
+				\CarlosAfonso\Logga\LogLevel::NOTICE => 'NOTICE   ',
+				\CarlosAfonso\Logga\LogLevel::WARNING => 'WARNING  ',
+				\CarlosAfonso\Logga\LogLevel::ERROR => 'ERROR    ',
+				\CarlosAfonso\Logga\LogLevel::CRITICAL => 'CRITICAL ',
+				\CarlosAfonso\Logga\LogLevel::ALERT => 'ALERT    ',
+				\CarlosAfonso\Logga\LogLevel::EMERGENCY => 'EMERGENCY'
+			);
 
 		public function format($msg, $level) {
 

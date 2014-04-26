@@ -22,8 +22,6 @@
 		private $_f;
 		private $_streams;
 
-		private $_levels = array(NULL, 'DEBUG  ', 'INFO   ', 'WARNING', 'ERROR  ', 'FATAL  ');
-
 		public function __construct($streams = NULL) {
 
 			if ($streams == NULL || (is_array($streams) && empty($streams)))
@@ -80,23 +78,46 @@
 		}
 
 		public function debug($msg) {
-			$this->_log($msg, LOGGA_LVL_DEBUG);
+			$this->_log($msg, LogLevel::DEBUG);
 		}
 
 		public function info($msg) {
-			$this->_log($msg, LOGGA_LVL_INFO);
+			$this->_log($msg, LogLevel::INFO);
+		}
+
+		public function notice($msg) {
+			$this->_log($msg, LogLevel::NOTICE);
 		}
 
 		public function warning($msg) {
-			$this->_log($msg, LOGGA_LVL_WARNING);
+			$this->_log($msg, LogLevel::WARNING);
 		}
 
 		public function error($msg) {
-			$this->_log($msg, LOGGA_LVL_ERROR);
+			$this->_log($msg, LogLevel::ERROR);
 		}
 
+		public function critical($msg) {
+			$this->_log($msg, LogLevel::CRITICAL);
+		}
+
+		public function alert($msg) {
+			$this->_log($msg, LogLevel::ALERT);
+		}
+
+		public function emergency($msg) {
+			$this->_log($msg, LogLevel::EMERGENCY);
+		}
+
+		/**
+		 * @deprecated	2.1.0	The FATAL log level does not adhere
+		 *	to the PSR-3 standard and is no longer used by Logga. Calls
+		 *	to this function will log an EMERGENCY level message instead.
+		 *
+		 */
 		public function fatal($msg) {
-			$this->_log($msg, LOGGA_LVL_FATAL);
+			trigger_error("The FATAL log level is no longer supported and will be removed in future versions", E_USER_DEPRECATED);
+			$this->emergency($msg);
 		}
 
 		private function _log($msg, $level) {
