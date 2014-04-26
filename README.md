@@ -56,7 +56,7 @@ If you run this code, the following line will be printed on screen:
 
 Furthermore, a file named something like ``default_log.log`` will appear in the folder you're running your script from. A quick look into it reveals the same content shown above.
 
-And that's pretty much it! You have set up your logging system with just a couple of lines. From now on you can trace everything you need using any of the five logging functions provided by Logga (``debug()``, ``info()``, ``warning()``, ``error()`` and ``fatal()``).
+And that's pretty much it! You have set up your logging system with just a couple of lines. From now on you can trace everything you need using any of the eight logging functions provided by Logga (``debug()``, ``info()``, ``notice()``, ``warning()``, ``error()``, ``critical()``, ``alert()`` and ``emergency()``).
 
 ##Usage
 The above is simple enough for the average developer but you might want to customize Logga a bit in order to fulfill your needs. This section will show you how.
