@@ -52,7 +52,6 @@
 				}
 
 				$this->addStream($stream);
-				$stream->open();
 			}
 		}
 
@@ -67,6 +66,7 @@
 
 		public function addStream(Streams\LogStream $stream) {
 			$this->_streams[] = $stream;
+			$stream->open();
 		}
 
 		public function removeStream($idx) {
