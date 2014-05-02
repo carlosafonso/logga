@@ -5,7 +5,7 @@
 	 * A convenient, lightweight logging library for PHP.
 	 *
 	 * @author	Carlos Afonso
-	 * @version	2.0.0
+	 *
 	 */
 	
 	namespace CarlosAfonso\Logga;
@@ -19,7 +19,6 @@
 	 */
 	class Logga {
 
-		private $_f;
 		private $_streams;
 
 		public function __construct($streams = NULL) {

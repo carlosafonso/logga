@@ -14,6 +14,7 @@
 		private $_ch;
 
 		private $_url;
+		private $_additionalParams;
 
 		public function __construct($params = NULL) {
 			parent::__construct($params);
@@ -22,6 +23,11 @@
 				throw new \CarlosAfonso\Logga\Exceptions\LoggaException("HttpStream needs a valid URL but none has been provided");
 			else
 				$this->_url = $params['url'];
+
+			if (! $params || ! isset($params['additional_params']) || ! is_array($params['additional_params']))
+				$this->_additionalParams = array();
+			else
+				$this->_additionalParams = $params['additional_params'];
 		}
 
 		public function open() {
@@ -36,6 +42,8 @@
 					'time'	=> time()
 				);
 
+			$params = array_merge($params, $this->_additionalParams);
+			
 			$raw = http_build_query($params);
 			curl_setopt($this->_ch, CURLOPT_POSTFIELDS, $raw);
 
