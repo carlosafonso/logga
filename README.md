@@ -1,5 +1,8 @@
 logga
 =====
+[![Latest Stable Version](https://poser.pugx.org/carlosafonso/logga/v/stable.png)](https://packagist.org/packages/carlosafonso/logga)
+[![Total Downloads](https://poser.pugx.org/carlosafonso/logga/downloads.png)](https://packagist.org/packages/carlosafonso/logga)
+[![License](https://poser.pugx.org/carlosafonso/logga/license.png)](https://packagist.org/packages/carlosafonso/logga)
 
 Logga is a logging library for PHP designed for simplicity and ease of use. Starting from v1.0.0, Logga features support for multiple logging streams and message formatters, providing developers with great flexibility.
 
