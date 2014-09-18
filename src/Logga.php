@@ -108,17 +108,6 @@
 			$this->_log($msg, LogLevel::EMERGENCY);
 		}
 
-		/**
-		 * @deprecated	2.1.0	The FATAL log level does not adhere
-		 *	to the PSR-3 standard and is no longer used by Logga. Calls
-		 *	to this function will log an EMERGENCY level message instead.
-		 *
-		 */
-		public function fatal($msg) {
-			trigger_error("The FATAL log level is no longer supported and will be removed in future versions", E_USER_DEPRECATED);
-			$this->emergency($msg);
-		}
-
 		private function _log($msg, $level) {
 			foreach ($this->_streams as $stream)
 				if ($stream->isEnabled() && $stream->getMinLevel() <= $level)
