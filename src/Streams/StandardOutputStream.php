@@ -1,6 +1,6 @@
 <?php
 
-	namespace CarlosAfonso\Logga\Streams;
+	namespace Logga\Streams;
 
 	/**
 	 * StandardOutputStream represents a log stream which

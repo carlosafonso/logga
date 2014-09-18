@@ -1,6 +1,6 @@
 <?php
 
-	namespace CarlosAfonso\Logga\Streams;
+	namespace Logga\Streams;
 
 	/**
 	 * LogStream represents an abstract log stream. All
@@ -12,11 +12,11 @@
 	abstract class LogStream {
 
 		protected $_enabled = TRUE;
-		protected $_minLevel = \CarlosAfonso\Logga\LogLevel::DEBUG;
+		protected $_minLevel = \Logga\LogLevel::DEBUG;
 		protected $_formatter;
 
 		public function __construct($params = NULL) {
-			$this->_formatter = new \CarlosAfonso\Logga\Formatters\DefaultFormatter();
+			$this->_formatter = new \Logga\Formatters\DefaultFormatter();
 
 			if (isset($params['min_level']))
 				$this->_minLevel = $params['min_level'];

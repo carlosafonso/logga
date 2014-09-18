@@ -47,7 +47,7 @@ require 'logga.php';
 Set up a quick logger with the following code:
 
 ```php
-$l = new \CarlosAfonso\Logga\Logga();
+$l = new \Logga\Logga();
 $l->info('Hello world!');
 ```
 

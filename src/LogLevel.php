@@ -1,6 +1,6 @@
 <?php
 
-	namespace CarlosAfonso\Logga;
+	namespace Logga;
 
 	class LogLevel {
 

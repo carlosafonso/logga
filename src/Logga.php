@@ -8,7 +8,7 @@
 	 *
 	 */
 	
-	namespace CarlosAfonso\Logga;
+	namespace Logga;
 
 	/**
 	 * Logga the library's main class. All logging is carried

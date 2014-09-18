@@ -1,6 +1,6 @@
 <?php
 	
-	namespace CarlosAfonso\Logga\Streams;
+	namespace Logga\Streams;
 
 	/**
 	 * FileStream represents a log stream which
@@ -52,10 +52,10 @@
 		public function open() {
 			if (! file_exists($this->_path))
 				if (! mkdir($this->_path, 0777, TRUE))
-					throw new \CarlosAfonso\Logga\Exceptions\LoggaException("Unable to create log folder '{$this->_path}'");
+					throw new \Logga\Exceptions\LoggaException("Unable to create log folder '{$this->_path}'");
 
 			if (! is_writable($this->_path))
-				throw new \CarlosAfonso\Logga\Exceptions\LoggaException("Cannot create log file into folder '{$this->_path}', folder is not writable (check permissions?)");
+				throw new \Logga\Exceptions\LoggaException("Cannot create log file into folder '{$this->_path}', folder is not writable (check permissions?)");
 
 			$mode = 'a';
 			if ($this->_truncate)
@@ -64,7 +64,7 @@
 			$this->_f = @fopen($this->_path . DIRECTORY_SEPARATOR . $this->_file, $mode);
 
 			if ($this->_f === FALSE)
-				throw new \CarlosAfonso\Logga\Exceptions\LoggaException("Unable to create log file '{$this->_file}'");
+				throw new \Logga\Exceptions\LoggaException("Unable to create log file '{$this->_file}'");
 		}
 
 		public function log($msg, $level) {

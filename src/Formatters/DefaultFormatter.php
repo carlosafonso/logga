@@ -1,6 +1,6 @@
 <?php
 
-	namespace CarlosAfonso\Logga\Formatters;
+	namespace Logga\Formatters;
 
 	/**
 	 * DefaultFormatter a basic implementation of a
@@ -14,14 +14,14 @@
 	class DefaultFormatter extends Formatter {
 
 		private static $_LEVELS = array(
-				\CarlosAfonso\Logga\LogLevel::DEBUG => 'DEBUG    ',
-				\CarlosAfonso\Logga\LogLevel::INFO => 'INFO     ',
-				\CarlosAfonso\Logga\LogLevel::NOTICE => 'NOTICE   ',
-				\CarlosAfonso\Logga\LogLevel::WARNING => 'WARNING  ',
-				\CarlosAfonso\Logga\LogLevel::ERROR => 'ERROR    ',
-				\CarlosAfonso\Logga\LogLevel::CRITICAL => 'CRITICAL ',
-				\CarlosAfonso\Logga\LogLevel::ALERT => 'ALERT    ',
-				\CarlosAfonso\Logga\LogLevel::EMERGENCY => 'EMERGENCY'
+				\Logga\LogLevel::DEBUG => 'DEBUG    ',
+				\Logga\LogLevel::INFO => 'INFO     ',
+				\Logga\LogLevel::NOTICE => 'NOTICE   ',
+				\Logga\LogLevel::WARNING => 'WARNING  ',
+				\Logga\LogLevel::ERROR => 'ERROR    ',
+				\Logga\LogLevel::CRITICAL => 'CRITICAL ',
+				\Logga\LogLevel::ALERT => 'ALERT    ',
+				\Logga\LogLevel::EMERGENCY => 'EMERGENCY'
 			);
 
 		public function format($msg, $level) {

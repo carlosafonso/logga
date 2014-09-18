@@ -1,6 +1,6 @@
 <?php
 
-	namespace CarlosAfonso\Logga\Formatters;
+	namespace Logga\Formatters;
 
 	/**
 	 * Formatter an abstract representation of a log trace

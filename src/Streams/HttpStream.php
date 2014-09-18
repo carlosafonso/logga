@@ -1,6 +1,6 @@
 <?php
 	
-	namespace CarlosAfonso\Logga\Streams;
+	namespace Logga\Streams;
 
 	/**
 	 * HttpStream represents a log stream which
@@ -20,7 +20,7 @@
 			parent::__construct($params);
 
 			if (! $params || ! isset($params['url']))
-				throw new \CarlosAfonso\Logga\Exceptions\LoggaException("HttpStream needs a valid URL but none has been provided");
+				throw new \Logga\Exceptions\LoggaException("HttpStream needs a valid URL but none has been provided");
 			else
 				$this->_url = $params['url'];
 

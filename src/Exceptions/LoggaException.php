@@ -1,6 +1,6 @@
 <?php
 
-	namespace CarlosAfonso\Logga\Exceptions;
+	namespace Logga\Exceptions;
 	
 	class LoggaException extends \Exception {
 
