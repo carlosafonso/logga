@@ -1,6 +1,7 @@
 logga
 =====
 [![Latest Stable Version](https://poser.pugx.org/carlosafonso/logga/v/stable.png)](https://packagist.org/packages/carlosafonso/logga)
+[![Build Status](https://travis-ci.org/carlosafonso/logga.svg?branch=master)](https://travis-ci.org/carlosafonso/logga)
 [![Total Downloads](https://poser.pugx.org/carlosafonso/logga/downloads.png)](https://packagist.org/packages/carlosafonso/logga)
 [![License](https://poser.pugx.org/carlosafonso/logga/license.png)](https://packagist.org/packages/carlosafonso/logga)
 
