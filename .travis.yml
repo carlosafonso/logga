@@ -7,3 +7,5 @@ php:
 
 install:
  - composer install --dev
+
+script: phpunit tests/
