@@ -3,6 +3,7 @@
 	"type": "library",
 	"description": "A logging library for PHP designed for simplicity and ease of use",
 	"keywords": ["logging"],
+	"license": "MIT",
 	"homepage": "http://github.com/carlosafonso/logga",
 	"require": {
 		"php": ">= 5.3.0"
