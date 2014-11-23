@@ -33,4 +33,24 @@ class DefaultFormatterTest extends  \PHPUnit_Framework_TestCase {
 		$output = $formatter->format('Just a test message', LogLevel::EMERGENCY);
 		$this->assertRegExp('/^\[\d{4}(-\d{2}){2} \d{2}(:\d{2}){2}\]\[EMERGENCY\s*\]: Just a test message/si', $output);
 	}
+
+	public function testPassingAnArrayAsTheMessageShouldReturnAJsonEncodedRepresentation() {
+		$formatter = new DefaultFormatter();
+		$array = ['foo' => 'bar', 'baz' => 3];
+
+		$output = $formatter->format($array, LogLevel::DEBUG);
+
+		$this->assertContains(json_encode($array), $output);
+	}
+
+	public function testPassingAnObjectAsTheMessageShouldReturnAJsonEncodedRepresentation() {
+		$formatter = new DefaultFormatter();
+		$object = new \stdClass();
+		$object->foo = 'bar';
+		$object->baz = 3;
+
+		$output = $formatter->format($object, LogLevel::DEBUG);
+
+		$this->assertContains(json_encode($object), $output);
+	}
 }
