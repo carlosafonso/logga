@@ -2,8 +2,12 @@
 
 	namespace Logga\Streams;
 
+	use Logga\Formatters\DefaultFormatter;
+	use Logga\Formatters\Formatter;
+	use Logga\LogLevel;
+
 	/**
-	 * LogStream represents an abstract log stream. All
+	 * Represents an abstract log stream. All
 	 * stream implementations must extend this class.
 	 *
 	 * @author Carlos Afonso
@@ -11,18 +15,13 @@
 	 */
 	abstract class LogStream {
 
-		protected $_enabled = TRUE;
-		protected $_minLevel = \Logga\LogLevel::DEBUG;
-		protected $_formatter;
+		protected $enabled = true;
+		protected $minLevel = LogLevel::DEBUG;
+		protected $formatter;
 
-		public function __construct($params = NULL) {
-			$this->_formatter = new \Logga\Formatters\DefaultFormatter();
-
-			if (isset($params['min_level']))
-				$this->_minLevel = $params['min_level'];
-
-			if (isset($params['enabled']))
-				$this->_enabled = (bool) $params['enabled'];
+		public function __construct(Formatter $formatter = null) {
+			if ($formatter == null)
+				$this->formatter = new DefaultFormatter();
 		}
 
 		public abstract function open();
@@ -30,22 +29,26 @@
 		public abstract function close();
 
 		public function isEnabled() {
-			return $this->_enabled;
+			return $this->enabled;
 		}
 
 		public function enable() {
-			$this->_enabled = TRUE;
+			$this->enabled = TRUE;
 		}
 
 		public function disable() {
-			$this->_enabled = FALSE;
+			$this->enabled = FALSE;
 		}
 
 		public function getMinLevel() {
-			return $this->_minLevel;
+			return $this->minLevel;
 		}
 
 		public function setMinLevel($level) {
-			$this->_minLevel = $level;
+			$this->minLevel = $level;
+		}
+
+		public function getFormatter() {
+			return $this->formatter;
 		}
 	}
