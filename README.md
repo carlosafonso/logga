@@ -16,7 +16,7 @@ Since version 2.0.0 Logga can be installed using [Composer](https://getcomposer.
 ```json
 {
   "require": {
-    "carlosafonso/logga": "2.*",
+    "carlosafonso/logga": "3.*",
   }
 }
 ```
@@ -70,7 +70,7 @@ In Logga, as in other logging libraries, a stream is an abstraction of a place w
 
 Additionally, you can configure each stream: for example, you might want all messages to be logged to the plain text file but only WARNING messages or above into the database.
 
-As of version 2.2.0, Logga comes with 3 streams: ``FileStream``, ``HttpStream`` and ``StandardOutputStream`` (with several others currently in the works, such as ``DatabaseStream`` and ``MailStream``).
+As of version 2.2.0, Logga comes with 4 streams: ``FileStream``, ``HttpStream``, ``MailStream`` and ``StandardOutputStream`` (with several others currently in the works, such as ``DatabaseStream``).
 
 ###Default streams
 If you don't specifically provide any stream to Logga's constructor, the library will use both a ``FileStream`` and a ``StandardOutputStream`` by default (the first one logging to a file named ``default_log.log``).
