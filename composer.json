@@ -15,8 +15,6 @@
 		"psr-4": {
 			"Logga\\": "src/"
 		},
-		"files": [
-			"src/_Constants.php"
-		]
+		"files": []
 	}
 }
