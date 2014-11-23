@@ -1,10 +1,12 @@
 <?php
 
+	namespace Logga\Tests\Unit;
+
 	use Logga\Logga;
 	use Logga\Streams\FileStream;
 	use Logga\Streams\StandardOutputStream;
 
-	class LoggaTest extends PHPUnit_Framework_TestCase {
+	class LoggaTest extends \PHPUnit_Framework_TestCase {
 
 		const TESTDIR_PREFIX = 'testdir_';
 

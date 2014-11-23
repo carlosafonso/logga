@@ -11,9 +11,12 @@
          syntaxCheck="false"
 >
     <testsuites>
-        <testsuite name="Logga Test Suite">
-            <directory>./tests/</directory>
+        <testsuite name="Logga Unit Test Suite">
+            <directory>./tests/unit</directory>
         </testsuite>
+        <!--<testsuite name="Logga Integration Test Suite">
+            <directory>./tests/integration</directory>
+        </testsuite>-->
     </testsuites>
 
     <filter>
