@@ -2,6 +2,7 @@
 
 namespace Logga\Tests\Unit;
 
+use Logga\Formatters\EmptyFormatter;
 use Logga\LogLevel;
 use Logga\Streams\LogStream;
 
@@ -36,5 +37,11 @@ class LogStreamTests extends \PHPUnit_Framework_TestCase {
 		$this->stream->setMinLevel(LogLevel::CRITICAL);
 
 		$this->assertEquals(LogLevel::CRITICAL, $this->stream->getMinLevel());
+	}
+
+	public function testStreamShouldAllowSettingACustomFormatter() {
+		$this->stream = $this->getMockForAbstractClass('Logga\Streams\LogStream', [new EmptyFormatter()]);
+
+		$this->assertInstanceOf('Logga\Formatters\EmptyFormatter', $this->stream->getFormatter());
 	}
 }

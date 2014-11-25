@@ -21,7 +21,8 @@
 
 		public function __construct(Formatter $formatter = null) {
 			if ($formatter == null)
-				$this->formatter = new DefaultFormatter();
+				$formatter = new DefaultFormatter();
+			$this->formatter = $formatter;
 		}
 
 		public abstract function open();
