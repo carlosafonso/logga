@@ -6,7 +6,7 @@ use Logga\Formatters\EmptyFormatter;
 use Logga\LogLevel;
 use Logga\Streams\LogStream;
 
-class LogStreamTests extends \PHPUnit_Framework_TestCase {
+class LogStreamTest extends \PHPUnit_Framework_TestCase {
 	private $stream;
 
 	public function setUp() {
