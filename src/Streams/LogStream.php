@@ -20,7 +20,7 @@
 		protected $formatter;
 
 		public function __construct(Formatter $formatter = null) {
-			if ($formatter == null)
+			if (! $formatter)
 				$formatter = new DefaultFormatter();
 			$this->formatter = $formatter;
 		}
