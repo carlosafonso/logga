@@ -6,6 +6,7 @@ use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 use org\bovigo\vfs\vfsStreamWrapper;
 
+use Logga\Formatters\EmptyFormatter;
 use Logga\LogLevel;
 use Logga\Streams\FileStream;
 
@@ -81,6 +82,7 @@ class FileStreamTests extends \PHPUnit_Framework_TestCase {
 		$this->assertFalse($this->root->hasChild('nonexisting'));
 		$this->stream->open();
 		$this->assertTrue($this->root->hasChild('nonexisting/folder/default_log.log'));
+		$this->assertEquals(0775, $this->root->getChild('nonexisting/folder')->getPermissions());
 	}
 
 	/**
@@ -105,4 +107,42 @@ class FileStreamTests extends \PHPUnit_Framework_TestCase {
 		$this->stream->open();
 	}
 
+	public function testStreamShouldWriteToTheSpecifiedFile() {
+		$this->stream->setFilePath(vfsStream::url('testdir'));
+		$this->stream->setFileName('custom_filename');
+
+		$this->stream->open();
+
+		$this->assertTrue($this->root->hasChild('custom_filename.log'));
+	}
+
+	public function testStreamShouldAddDatetimeToFileNameIfEnabled() {
+		$this->stream->setFilePath(vfsStream::url('testdir'));
+		$this->stream->setAppendDatetime(true);
+
+		$this->stream->open();
+
+		$this->assertTrue($this->root->hasChild('default_log_' . date('Y-m-d_H-i-s') . '.log'));
+	}
+
+	public function testStreamShouldWriteTracesToFile() {
+		$this->stream = new FileStream(new EmptyFormatter());
+		$this->stream->setFilePath(vfsStream::url('testdir'));
+
+		$this->stream->open();
+		$this->stream->log("A debug trace", LogLevel::DEBUG);
+		$this->stream->log("An info trace", LogLevel::INFO);
+		$this->stream->log("A notice trace", LogLevel::NOTICE);
+		$this->stream->log("A warning trace", LogLevel::WARNING);
+		$this->stream->log("An error trace", LogLevel::ERROR);
+		$this->stream->log("A critical trace", LogLevel::CRITICAL);
+		$this->stream->log("An alert trace", LogLevel::ALERT);
+		$this->stream->log("An emergency trace", LogLevel::EMERGENCY);
+		$this->stream->close();
+
+		$logFile = $this->root->getChild('default_log.log');
+		$content = $logFile->getContent();
+		$this->assertEquals("A debug trace\nAn info trace\nA notice trace\nA warning trace\nAn error trace\nA critical trace\nAn alert trace\nAn emergency trace\n",
+			$content);
+	}
 }

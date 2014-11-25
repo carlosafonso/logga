@@ -31,21 +31,25 @@
 
 		public function open() {
 			if (! file_exists($this->filePath))
-				if (! mkdir($this->filePath, 0777, TRUE))
+				if (! mkdir($this->filePath, 0775, TRUE))
 					throw new \Logga\Exceptions\LoggaException("Unable to create log folder '{$this->filePath}'");
 
 			$mode = 'a';
 			if ($this->truncateFile)
 				$mode = 'w';
 
-			$this->file = @fopen($this->filePath . DIRECTORY_SEPARATOR . $this->fileName . '.log', $mode);
+			$datetimeSuffix = '';
+			if ($this->appendDatetime)
+				$datetimeSuffix = '_' . date('Y-m-d_H-i-s');
+
+			$this->file = @fopen($this->filePath . DIRECTORY_SEPARATOR . $this->fileName . $datetimeSuffix . '.log', $mode);
 
 			if ($this->file === FALSE)
 				throw new \Logga\Exceptions\LoggaException("Unable to create log file '{$this->fileName}'");
 		}
 
 		public function log($msg, $level) {
-			fwrite($this->file, $this->_formatter->format($msg, $level) . "\n");
+			fwrite($this->file, $this->formatter->format($msg, $level) . "\n");
 		}
 
 		public function close() {
